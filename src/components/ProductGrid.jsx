@@ -4,8 +4,8 @@ import ProductCard from './ProductCard';
 const defaultProducts = [
   {
     id: '1',
-    name: 'Monstera Deliciosa',
-    category: 'Indoor Plant',
+    name: 'מונסטרה דליסיוזה',
+    category: 'צמח בית',
     price: 129.9,
     rating: 4.8,
     image:
@@ -13,8 +13,8 @@ const defaultProducts = [
   },
   {
     id: '2',
-    name: 'Snake Plant',
-    category: 'Low-light Plant',
+    name: 'סנסיווריה',
+    category: 'צמח לשטחים מואפלים',
     price: 89.0,
     rating: 4.7,
     image:
@@ -22,8 +22,8 @@ const defaultProducts = [
   },
   {
     id: '3',
-    name: 'Fiddle Leaf Fig',
-    category: 'Statement Plant',
+    name: 'פיקוס כינורי',
+    category: 'צמח הצהרתי',
     price: 159.0,
     rating: 4.6,
     image:
@@ -31,8 +31,8 @@ const defaultProducts = [
   },
   {
     id: '4',
-    name: 'Terracotta Pot (Large)',
-    category: 'Planter',
+    name: 'עציץ טרקוטה (גדול)',
+    category: 'עציץ',
     price: 49.0,
     rating: 4.9,
     image:
@@ -42,13 +42,13 @@ const defaultProducts = [
 
 function ProductGrid({ products = defaultProducts, onAdd }) {
   return (
-    <section id="shop" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <section id="shop" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12" dir="rtl">
       <div className="flex items-end justify-between mb-6">
-        <div>
-          <h2 className="text-2xl font-bold tracking-tight">Best sellers</h2>
-          <p className="text-gray-600">Handpicked favorites from our community</p>
+        <div className="text-right ml-auto">
+          <h2 className="text-2xl font-bold tracking-tight">הנמכרים ביותר</h2>
+          <p className="text-gray-600">המועדפים שנבחרו בקפידה על ידי הקהילה שלנו</p>
         </div>
-        <a href="#" className="text-green-700 font-medium hover:underline">View all</a>
+        <a href="#" className="text-green-700 font-medium hover:underline">הצג הכל</a>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((p) => (

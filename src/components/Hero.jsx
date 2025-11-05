@@ -3,25 +3,25 @@ import { Sprout } from 'lucide-react';
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-green-50 to-white">
+    <section className="relative overflow-hidden bg-gradient-to-b from-green-50 to-white" dir="rtl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
-        <div>
+        <div className="order-2 lg:order-none">
           <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-white px-3 py-1 text-sm text-green-700">
             <Sprout size={16} />
-            Locally grown • Sustainable • Fresh
+            מגודל מקומי • ידידותי לסביבה • טרי
           </div>
-          <h1 className="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
-            Grow your happy place.
+          <h1 className="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight text-right">
+            תגדלו את המקום השמח שלכם.
           </h1>
-          <p className="mt-4 text-lg text-gray-600 max-w-prose">
-            Discover healthy indoor plants, vibrant outdoor varieties, premium soil, and handcrafted pots. We deliver with care and expert guidance for every plant parent.
+          <p className="mt-4 text-lg text-gray-600 max-w-prose ml-auto text-right">
+            גילוי צמחי בית בריאים, זנים חיצוניים צבעוניים, אדמה איכותית ועציצים בעבודת יד. משלוח עד הבית עם ליווי מקצועי לכל הורה לצמחים.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3 justify-end">
             <a href="#shop" className="inline-flex items-center justify-center rounded-xl bg-green-600 px-5 py-3 text-white font-medium hover:bg-green-700 transition">
-              Shop best sellers
+              לרכישת המומלצים
             </a>
             <a href="#learn" className="inline-flex items-center justify-center rounded-xl border px-5 py-3 font-medium hover:bg-gray-50 transition">
-              Plant care guide
+              מדריך טיפול בצמחים
             </a>
           </div>
         </div>

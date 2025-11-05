@@ -40,7 +40,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-white text-gray-900" dir="rtl">
       <Navbar cartCount={cartCount} onCartToggle={() => setDrawerOpen(true)} />
       <main>
         <Hero />
@@ -48,7 +48,6 @@ function App() {
       </main>
       <Footer />
 
-      {/* Cart Drawer */}
       {drawerOpen && (
         <div className="fixed inset-0 z-50">
           <div
@@ -56,19 +55,19 @@ function App() {
             onClick={() => setDrawerOpen(false)}
             aria-hidden
           />
-          <aside className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
+          <aside className="absolute left-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
             <div className="flex items-center justify-between p-4 border-b">
-              <h3 className="text-lg font-semibold">Your cart</h3>
+              <h3 className="text-lg font-semibold">העגלה שלך</h3>
               <button
                 className="rounded-lg border px-3 py-1.5 hover:bg-gray-50"
                 onClick={() => setDrawerOpen(false)}
               >
-                Close
+                סגור
               </button>
             </div>
             <div className="flex-1 overflow-auto p-4 space-y-4">
               {cart.length === 0 ? (
-                <p className="text-gray-600">Your cart is empty. Add some plants!</p>
+                <p className="text-gray-600">העגלה ריקה. הוסף צמחים!</p>
               ) : (
                 cart.map((item) => (
                   <div key={item.id} className="flex gap-3">
@@ -79,7 +78,7 @@ function App() {
                     />
                     <div className="flex-1">
                       <div className="flex items-start justify-between">
-                        <div>
+                        <div className="text-right">
                           <h4 className="font-medium leading-tight">{item.name}</h4>
                           <p className="text-sm text-gray-500">₪{item.price.toFixed(2)}</p>
                         </div>
@@ -87,14 +86,14 @@ function App() {
                           className="text-sm text-red-600 hover:underline"
                           onClick={() => handleRemove(item.id)}
                         >
-                          Remove
+                          הסר
                         </button>
                       </div>
                       <div className="mt-2 inline-flex items-center gap-2">
                         <button
                           className="h-8 w-8 grid place-items-center rounded-lg border"
                           onClick={() => handleUpdateQty(item.id, -1)}
-                          aria-label={`Decrease quantity of ${item.name}`}
+                          aria-label={`הפחת כמות עבור ${item.name}`}
                         >
                           −
                         </button>
@@ -102,7 +101,7 @@ function App() {
                         <button
                           className="h-8 w-8 grid place-items-center rounded-lg border"
                           onClick={() => handleUpdateQty(item.id, 1)}
-                          aria-label={`Increase quantity of ${item.name}`}
+                          aria-label={`הוסף כמות עבור ${item.name}`}
                         >
                           +
                         </button>
@@ -114,14 +113,14 @@ function App() {
             </div>
             <div className="border-t p-4">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-sm text-gray-600">Subtotal</span>
+                <span className="text-sm text-gray-600">סה״כ</span>
                 <span className="font-semibold">₪{cartTotal.toFixed(2)}</span>
               </div>
               <button
                 disabled={cart.length === 0}
                 className="w-full rounded-xl bg-green-600 px-4 py-3 text-white font-medium hover:bg-green-700 disabled:opacity-50"
               >
-                Checkout
+                לתשלום
               </button>
             </div>
           </aside>

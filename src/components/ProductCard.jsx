@@ -1,7 +1,7 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 
-function ProductCard({ product, onAdd }) {
+function ProductCard({ product, onAdd, formatPrice = (n) => `₪${n.toFixed(2)}` }) {
   return (
     <div className="group rounded-2xl border bg-white overflow-hidden hover:shadow-lg transition" dir="rtl">
       <div className="aspect-square w-full bg-gray-100">
@@ -24,7 +24,7 @@ function ProductCard({ product, onAdd }) {
           </div>
         </div>
         <div className="mt-3 flex items-center justify-between">
-          <span className="text-lg font-semibold">₪{product.price.toFixed(2)}</span>
+          <span className="text-lg font-semibold">{formatPrice(product.price)}</span>
           <button
             onClick={() => onAdd(product)}
             className="rounded-xl bg-green-600 px-3 py-2 text-sm font-medium text-white hover:bg-green-700"

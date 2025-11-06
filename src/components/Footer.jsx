@@ -1,7 +1,7 @@
 import React from 'react';
 import { Instagram, Phone, MapPin } from 'lucide-react';
 
-function Footer() {
+function Footer({ businessName = 'משתלת עלה ושורש' }) {
   return (
     <footer className="border-t mt-16" dir="rtl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid gap-8 md:grid-cols-3">
@@ -28,7 +28,7 @@ function Footer() {
           </form>
         </div>
       </div>
-      <div className="py-4 text-center text-sm text-gray-500">© {new Date().getFullYear()} משתלת עלה ושורש. כל הזכויות שמורות.</div>
+      <div className="py-4 text-center text-sm text-gray-500">© {new Date().getFullYear()} {businessName}. כל הזכויות שמורות.</div>
     </footer>
   );
 }

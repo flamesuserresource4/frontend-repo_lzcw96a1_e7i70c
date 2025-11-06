@@ -1,10 +1,10 @@
 import React from 'react';
 import { Leaf, ShoppingCart, Search } from 'lucide-react';
 
-function Navbar({ cartCount = 0, onCartToggle }) {
+function Navbar({ businessName = 'משתלת עלה ושורש', cartCount = 0, onCartToggle, search = '', onSearchChange }) {
   return (
     <header className="sticky top-0 z-50 w-full bg-white/70 backdrop-blur border-b" dir="rtl">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
         <button
           onClick={onCartToggle}
           className="relative inline-flex items-center gap-2 rounded-xl border px-3 py-2 hover:bg-gray-50 order-1 md:order-none"
@@ -19,11 +19,13 @@ function Navbar({ cartCount = 0, onCartToggle }) {
           )}
         </button>
 
-        <div className="hidden md:flex items-center flex-1 max-w-xl mx-8">
+        <div className="hidden md:flex items-center flex-1 max-w-xl mx-4">
           <div className="relative w-full">
             <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
             <input
               type="text"
+              value={search}
+              onChange={(e) => onSearchChange?.(e.target.value)}
               placeholder="חיפוש צמחים, עציצים ואדמה..."
               className="w-full pr-10 pl-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-green-500 text-right"
             />
@@ -34,7 +36,7 @@ function Navbar({ cartCount = 0, onCartToggle }) {
           <div className="h-9 w-9 rounded-xl bg-green-600 grid place-items-center text-white">
             <Leaf size={20} />
           </div>
-          <span className="font-semibold tracking-tight text-xl">משתלת עלה ושורש</span>
+          <span className="font-semibold tracking-tight text-xl">{businessName}</span>
         </div>
       </div>
     </header>

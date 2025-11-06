@@ -1,33 +1,52 @@
 import React from 'react';
-import { Sprout } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-green-50 to-white" dir="rtl">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
-        <div className="order-2 lg:order-none">
-          <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-white px-3 py-1 text-sm text-green-700">
-            <Sprout size={16} />
-            מגודל מקומי • ידידותי לסביבה • טרי
-          </div>
-          <h1 className="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight text-right">
-            תגדלו את המקום השמח שלכם.
+    <section dir="rtl" className="relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-green-50 via-white to-white" />
+
+      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-24 grid md:grid-cols-2 gap-10 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="text-right"
+        >
+          <span className="inline-block rounded-full bg-green-100 text-green-700 px-3 py-1 text-sm font-medium mb-4">
+            משתלת הבית שלכם
+          </span>
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
+            צמחים שמכניסים חיים לבית ולעסק
           </h1>
-          <p className="mt-4 text-lg text-gray-600 max-w-prose ml-auto text-right">
-            גילוי צמחי בית בריאים, זנים חיצוניים צבעוניים, אדמה איכותית ועציצים בעבודת יד. משלוח עד הבית עם ליווי מקצועי לכל הורה לצמחים.
+          <p className="mt-4 text-gray-600 text-lg">
+            מגוון עצום של צמחי בית, גינה ועציצים מעוצבים, עם ייעוץ מקצועי ואהבה לטבע.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3 justify-end">
-            <a href="#shop" className="inline-flex items-center justify-center rounded-xl bg-green-600 px-5 py-3 text-white font-medium hover:bg-green-700 transition">
-              לרכישת המומלצים
+          <div className="mt-8 flex items-center justify-end gap-3">
+            <a href="#shop" className="inline-flex items-center justify-center rounded-xl bg-green-600 text-white px-5 py-3 text-sm font-semibold shadow-sm hover:bg-green-700 active:scale-95 transition">
+              להתחיל לקנות
             </a>
-            <a href="#learn" className="inline-flex items-center justify-center rounded-xl border px-5 py-3 font-medium hover:bg-gray-50 transition">
-              מדריך טיפול בצמחים
+            <a href="#categories" className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white text-gray-700 px-5 py-3 text-sm font-semibold hover:bg-gray-50 active:scale-95 transition">
+              עיון בקטגוריות
             </a>
           </div>
-        </div>
-        <div className="relative aspect-[4/3] w-full rounded-2xl bg-[url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center shadow-xl" aria-hidden="true">
-          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/5" />
-        </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+          className="relative"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1524594227089-68f0d9a2a5f5?q=80&w=1200&auto=format&fit=crop"
+            alt="צמחים ירוקים בעציצים מעוצבים"
+            className="w-full rounded-2xl shadow-lg ring-1 ring-black/5"
+          />
+          <div className="pointer-events-none absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-green-200/50 blur-2xl" />
+          <div className="pointer-events-none absolute -top-6 -right-6 h-24 w-24 rounded-full bg-emerald-200/50 blur-2xl" />
+        </motion.div>
       </div>
     </section>
   );

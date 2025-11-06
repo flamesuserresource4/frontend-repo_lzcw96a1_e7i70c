@@ -1,43 +1,55 @@
 import React from 'react';
-import { Leaf, ShoppingCart, Search } from 'lucide-react';
+import { ShoppingCart, Search } from 'lucide-react';
 
-function Navbar({ businessName = 'משתלת עלה ושורש', cartCount = 0, onCartToggle, search = '', onSearchChange }) {
+function Navbar({ businessName, cartCount, onCartToggle, search, onSearchChange }) {
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/70 backdrop-blur border-b" dir="rtl">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+    <header dir="rtl" className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+      <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-green-100 text-green-700 font-bold">🌿</span>
+          <span className="text-xl font-extrabold tracking-tight text-gray-800">{businessName}</span>
+        </div>
+
+        <div className="flex-1" />
+
+        <label className="relative hidden sm:block w-full max-w-md">
+          <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+          <input
+            dir="rtl"
+            type="text"
+            value={search}
+            onChange={(e) => onSearchChange(e.target.value)}
+            placeholder="חיפוש צמחים, קטגוריות..."
+            className="w-full rounded-xl border border-gray-300 bg-white pr-10 pl-4 py-2 text-right text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+        </label>
+
         <button
           onClick={onCartToggle}
-          className="relative inline-flex items-center gap-2 rounded-xl border px-3 py-2 hover:bg-gray-50 order-1 md:order-none"
-          aria-label="פתח עגלה"
+          className="relative ml-2 inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 active:scale-95 transition"
         >
-          <ShoppingCart size={18} />
-          <span className="hidden sm:inline">עגלה</span>
+          <ShoppingCart className="h-5 w-5 text-gray-600" />
+          <span>עגלה</span>
           {cartCount > 0 && (
-            <span className="absolute -top-2 -right-2 h-5 min-w-[1.25rem] px-1 rounded-full bg-green-600 text-white text-xs grid place-items-center">
+            <span className="absolute -top-2 -left-2 min-w-[1.5rem] h-6 rounded-full bg-green-600 px-2 text-white text-xs grid place-items-center">
               {cartCount}
             </span>
           )}
         </button>
+      </div>
 
-        <div className="hidden md:flex items-center flex-1 max-w-xl mx-4">
-          <div className="relative w-full">
-            <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => onSearchChange?.(e.target.value)}
-              placeholder="חיפוש צמחים, עציצים ואדמה..."
-              className="w-full pr-10 pl-4 py-2 rounded-xl border focus:outline-none focus:ring-2 focus:ring-green-500 text-right"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center gap-2 order-2 md:order-none">
-          <div className="h-9 w-9 rounded-xl bg-green-600 grid place-items-center text-white">
-            <Leaf size={20} />
-          </div>
-          <span className="font-semibold tracking-tight text-xl">{businessName}</span>
-        </div>
+      <div className="sm:hidden px-4 pb-3">
+        <label className="relative block">
+          <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+          <input
+            dir="rtl"
+            type="text"
+            value={search}
+            onChange={(e) => onSearchChange(e.target.value)}
+            placeholder="חיפוש צמחים, קטגוריות..."
+            className="w-full rounded-xl border border-gray-300 bg-white pr-10 pl-4 py-2 text-right text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+        </label>
       </div>
     </header>
   );
